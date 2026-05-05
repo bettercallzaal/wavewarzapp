@@ -1,41 +1,59 @@
 {
   "expo": {
-    "name": "wwapp-bootstrap",
-    "slug": "wwapp-bootstrap",
-    "version": "1.0.0",
+    "name": "WaveWarZ Live",
+    "slug": "wavewarz-live",
+    "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
+    "scheme": "wavewarzlive",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wavewarz.live",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "We do not track you.",
+        "UIBackgroundModes": ["remote-notification"]
+      },
+      "entitlements": {
+        "com.apple.developer.usernotifications.time-sensitive": true,
+        "aps-environment": "production"
+      },
+      "associatedDomains": ["applinks:live.wavewarz.com"]
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "package": "com.wavewarz.live",
+      "permissions": ["POST_NOTIFICATIONS", "INTERNET", "VIBRATE", "WAKE_LOCK"],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [{ "scheme": "https", "host": "live.wavewarz.com" }],
+          "category": ["BROWSABLE", "DEFAULT"],
+          "autoVerify": true
+        }
+      ]
     },
     "plugins": [
       "expo-router",
+      "expo-font",
       [
-        "expo-splash-screen",
+        "expo-notifications",
+        { "color": "#A855F7", "sounds": [] }
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/messaging",
+      "@react-native-firebase/crashlytics",
+      [
+        "expo-build-properties",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "ios": { "useFrameworks": "static" },
+          "android": { "enableProguardInReleaseBuilds": true }
         }
       ]
     ],
-    "experiments": {
-      "typedRoutes": true
+    "experiments": { "typedRoutes": true },
+    "extra": {
+      "eas": { "projectId": "REPLACE_WITH_EAS_PROJECT_ID_AFTER_eas init" }
     }
   }
 }
