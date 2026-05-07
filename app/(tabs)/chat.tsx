@@ -44,8 +44,7 @@ export default function ChatScreen() {
       await sendChatMessage({ uid, displayName: nickname, text: trimmed });
       setText('');
     } catch (err) {
-      const message =
-        err instanceof ChatError ? err.message : 'Could not send. Try again.';
+      const message = err instanceof ChatError ? err.message : 'Could not send. Try again.';
       Alert.alert('Could not send', message);
     } finally {
       setSending(false);

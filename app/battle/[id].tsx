@@ -88,7 +88,8 @@ export default function BattleDetailScreen() {
             fontFamily: 'SpaceGrotesk-Bold',
           }}
         >
-          {battle.artistAName}{'\n'}vs {battle.artistBName}
+          {battle.artistAName}
+          {'\n'}vs {battle.artistBName}
         </Text>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

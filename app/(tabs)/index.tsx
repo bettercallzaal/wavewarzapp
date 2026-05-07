@@ -212,7 +212,8 @@ export default function LiveScreen() {
                   {artist.name}
                 </Text>
                 <Text style={{ color: palette.textMuted, fontSize: fontSize.xs }}>
-                  {artist.wins}W-{artist.losses}L · {artist.winRatePercent}% · {artist.volumeSol.toFixed(2)} SOL
+                  {artist.wins}W-{artist.losses}L · {artist.winRatePercent}% ·{' '}
+                  {artist.volumeSol.toFixed(2)} SOL
                 </Text>
               </View>
             </Pressable>

@@ -6,18 +6,25 @@ const emitter = createEmitter<Battle[]>(mockBattles);
 
 const orderForStatus = (status: BattleStatus, list: Battle[]): Battle[] => {
   if (status === 'settled') {
-    return [...list].sort((a, b) => (b.settledAt?.toMillis() ?? 0) - (a.settledAt?.toMillis() ?? 0));
+    return [...list].sort(
+      (a, b) => (b.settledAt?.toMillis() ?? 0) - (a.settledAt?.toMillis() ?? 0),
+    );
   }
-  return [...list].sort(
-    (a, b) => (a.startedAt?.toMillis() ?? 0) - (b.startedAt?.toMillis() ?? 0),
-  );
+  return [...list].sort((a, b) => (a.startedAt?.toMillis() ?? 0) - (b.startedAt?.toMillis() ?? 0));
 };
 
 export const subscribeToBattles = (
   status: BattleStatus,
   listener: (battles: Battle[]) => void,
 ): Unsubscribe =>
-  emitter.subscribe((list) => listener(orderForStatus(status, list.filter((b) => b.status === status))));
+  emitter.subscribe((list) =>
+    listener(
+      orderForStatus(
+        status,
+        list.filter((b) => b.status === status),
+      ),
+    ),
+  );
 
 export const subscribeToBattle = (
   id: string,

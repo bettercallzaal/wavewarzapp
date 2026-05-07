@@ -2,7 +2,10 @@ import { View, Text } from 'react-native';
 import { palette, radii } from '@/theme';
 
 const initials = (name: string): string => {
-  const parts = name.trim().replace(/^\$/, '').split(/[\s:]+/);
+  const parts = name
+    .trim()
+    .replace(/^\$/, '')
+    .split(/[\s:]+/);
   if (parts.length === 0) return '?';
   if (parts.length === 1) {
     const word = parts[0] ?? '';
