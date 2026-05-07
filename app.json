@@ -7,6 +7,7 @@
     "userInterfaceStyle": "dark",
     "scheme": "wavewarzlive",
     "newArchEnabled": true,
+    "icon": "./assets/images/icon.png",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.wavewarz.live",
@@ -30,28 +31,21 @@
           "category": ["BROWSABLE", "DEFAULT"],
           "autoVerify": true
         }
-      ]
-    },
-    "plugins": [
-      "expo-router",
-      "expo-font",
-      [
-        "expo-notifications",
-        { "color": "#A855F7", "sounds": [] }
       ],
-      "@react-native-firebase/app",
-      "@react-native-firebase/auth",
-      "@react-native-firebase/messaging",
-      "@react-native-firebase/crashlytics",
-      [
-        "expo-build-properties",
-        {
-          "ios": { "useFrameworks": "static" },
-          "android": { "enableProguardInReleaseBuilds": true }
-        }
-      ]
-    ],
-    "experiments": { "typedRoutes": true },
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#070B14"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": ["expo-router", "expo-font"],
+    "experiments": {
+      "typedRoutes": true
+    },
     "extra": {
       "eas": { "projectId": "REPLACE_WITH_EAS_PROJECT_ID_AFTER_eas init" }
     }
